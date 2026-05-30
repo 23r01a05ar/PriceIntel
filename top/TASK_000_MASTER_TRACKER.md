@@ -23,7 +23,7 @@
 |------|-------|----------|--------|
 | TASK_005 | Delete dead Python files | HIGH | [✓] |
 | TASK_006 | Delete duplicate frontend apps | HIGH | [✓] |
-| TASK_007 | Create .env.example | HIGH | [ ] |
+| TASK_007 | Create .env.example | HIGH | [✓] |
 | TASK_008 | Fix requirements.txt | HIGH | [ ] |
 | TASK_009 | Update README.md | MEDIUM | [ ] |
 
