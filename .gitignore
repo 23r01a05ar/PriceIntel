@@ -1,0 +1,47 @@
+# Python virtual environment
+venv/
+ENV/
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Node / React dependencies
+node_modules/
+
+# Environment variables (Secrets)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+backend/price_intelligence.db
+
+# User image uploads
+uploads/
+backend/uploads/
+app/uploads/
+
+# Build files
+build/
+dist/
+.next/
+out/
+
+# IDEs and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
