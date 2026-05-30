@@ -2,7 +2,7 @@
 
 ### **Infosys Springboard Virtual Internship 6.0 | Batch-13**
 
-A high-performance, professional price comparison and intelligence platform. It aggregates real-time data from major e-commerce stores using advanced web scraping and **AI-assisted image recognition for product matching** to provide users with the best deals and market insights.
+A high-performance, professional price comparison and intelligence platform. It aggregates real-time data from major e-commerce stores using professional API engines (Amazon, Flipkart, Walmart) and **AI-assisted image recognition for product matching** to provide users with the best deals and market insights.
 
 ---
 
@@ -12,52 +12,52 @@ A high-performance, professional price comparison and intelligence platform. It 
 In today's fragmented e-commerce market, shoppers struggle to find the best prices manually. Dynamic pricing and varying product descriptions across stores (Amazon, Flipkart, Walmart) make manual comparison time-consuming and often inaccurate.
 
 **The Solution:**
-This platform automates the entire process. By combining multi-source web scraping with **AI-driven image analysis**, we provide a unified **Glassmorphism dashboard** where users can instantly compare prices, track historical trends via Chart.js, and get smart recommendations based on visual similarity.
+This platform automates the entire process. By combining multi-source real-time API integrations with **AI-driven image analysis**, we provide a unified **Glassmorphism dashboard** where users can instantly compare prices, track historical trends via charts, and get smart recommendations based on visual similarity.
 
 ---
 
 ## ✨ Key Features
 
-* 🔍 Multi-platform price comparison (Amazon, Flipkart, Walmart)
-* 🤖 AI-powered product matching using image recognition
-* 📊 Price history tracking with interactive charts (Chart.js)
+* 🔍 Multi-platform real-time price comparison (Amazon, Flipkart, Walmart APIs)
+* 🤖 AI-powered product matching using image recognition (MobileNetV2)
+* 📊 Price history tracking with interactive charts
 * ❤️ Wishlist system ("Intelligence Vault")
 * 🌙 Dark mode + Glassmorphism UI
 * 🔐 Google OAuth authentication
-* ⚡ Fast API responses with caching
+* ⚡ Fast API responses with server-side caching
 
 ---
 
 ## 🔄 Data Flow
 
 * **Frontend:** User submits a search query or uploads a product image
-* **Flask API:** Handles requests and dispatches scraping tasks
-* **Scrapers:** Fetch product data from multiple platforms
-* **AI Layer:** Validates product matches using TensorFlow/OpenCV
+* **Flask API:** Handles requests, authenticates sessions, and manages API dispatches
+* **API Engines:** Fetch real-time product prices from multiple platforms securely
+* **AI Layer:** Identifies product details using TensorFlow (MobileNetV2)
 * **Database:** Stores results in SQLite via SQLAlchemy
-* **Response:** Returns structured JSON to frontend
+* **Response:** Returns structured JSON to the frontend dashboard
 
 ---
 
 ## 🏗️ System Architecture
 
-* **Frontend:** React + Vite (Glassmorphism UI, Dark Mode)
-* **Backend:** Flask (API, scraping, AI processing)
+* **Frontend:** React + Vite (Glassmorphism UI, Dark/Light Mode)
+* **Backend:** Flask (Secure API endpoints, AI processing, caching)
 * **Database:** SQLite (SQLAlchemy ORM)
-* **Authentication:** Google OAuth + Werkzeug security
+* **Authentication:** Google OAuth + Werkzeug secure hashing
 
 ---
 
 ## 🛠️ Technology Stack
 
-| Category | Technologies                        |
+| Category | Technologies |
 | -------- | ----------------------------------- |
 | Frontend | React, Bootstrap 5, Chart.js, Axios |
-| Backend  | Flask, Flask-CORS, Flask-Caching    |
-| AI       | TensorFlow, OpenCV, NumPy, Pillow   |
-| Scraping | BeautifulSoup4, Requests            |
-| Database | SQLite, SQLAlchemy                  |
-| Tools    | Git, GitHub, VS Code, Postman       |
+| Backend  | Flask, Flask-CORS, Flask-Caching, python-dotenv |
+| AI       | TensorFlow, OpenCV, NumPy, Pillow |
+| APIs     | RapidAPI (Amazon, Walmart, Flipkart), SerpAPI |
+| Database | SQLite, SQLAlchemy |
+| Tools    | Git, GitHub, VS Code, Postman |
 
 ---
 
@@ -65,9 +65,7 @@ This platform automates the entire process. By combining multi-source web scrapi
 
 * Python 3.9+ installed
 * Node.js installed
-* `uploads/` folder exists in backend
 * Ports available:
-
   * Frontend → `5173`
   * Backend → `5000`
 
@@ -75,13 +73,21 @@ This platform automates the entire process. By combining multi-source web scrapi
 
 ## 🔑 Environment Variables
 
-Create a `.env` file in `/backend`:
+To configure local environment variables securely:
+1. Navigate to `/backend`.
+2. Copy `.env.example` to a new file named `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+3. Open `.env` and fill in your actual credentials (the `.env` file is ignored by Git to prevent credential leaks):
+   ```env
+   # API Keys
+   RAPIDAPI_KEY=your_rapidapi_key_here
+   SERPAPI_KEY=your_serpapi_key_here
 
-```env
-SQLALCHEMY_DATABASE_URI=sqlite:///intelligence.db
-SECRET_KEY=dev-secret-key-change-me
-GOOGLE_CLIENT_ID=your_google_id_here
-```
+   # OAuth Client ID
+   GOOGLE_CLIENT_ID=your_google_id_here
+   ```
 
 ---
 
@@ -92,7 +98,11 @@ GOOGLE_CLIENT_ID=your_google_id_here
 ```bash
 cd backend
 python -m venv venv
+# On Windows
 venv\Scripts\activate
+# On Linux/macOS
+source venv/bin/activate
+
 pip install -r requirements.txt
 python app.py
 ```
@@ -111,25 +121,19 @@ npm start
 
 ## 📡 API Endpoints
 
-* `GET /api/compare-prices?product=laptop`
-* `POST /api/upload-image`
-* `GET /api/price-history?product_id=1`
-* `POST /api/wishlist`
-
----
-
-## 🛠️ Troubleshooting
-
-* Import errors → check `__init__.py`
-* Dark mode issues → verify CSS reset
-* DB errors → ensure write permissions
-* Scraping blocked → update headers or retry
+* `GET /api/compare-prices?product=laptop` — Compare real-time prices across stores
+* `POST /api/upload-image` — Upload product image for AI-driven search
+* `GET /api/price-history?product_id=1` — Retrieve historical prices for charting
+* `POST /api/wishlist` — Add a product to the user's wishlist vault
+* `GET /api/wishlist/<user_id>` — Fetch the user's vault
+* `DELETE /api/wishlist/<wish_id>` — Remove a product from the wishlist
 
 ---
 
 ## 📸 Screenshots
 
-(https://drive.google.com/drive/folders/18DV5u3IYKk3hqJI6MyI-1C5lJ1TWlCxy?usp=drive_link)
+The user interface mockups and dashboards can be viewed in:
+- [UI PHOTOS Directory](file:///e:/product-price-intelligence-main/UI%20PHOTOS) in the repository workspace.
 
 ---
 
@@ -143,7 +147,6 @@ npm start
 
 ## 👨‍💻 Author
 
-**K.S.S. Vallabha**
-Infosys Springboard Internship – Batch 13
-
----
+**K.S.S. Vallabha**  
+Infosys Springboard Internship – Batch 13  
+Project modernized and updated under secure development standards.
