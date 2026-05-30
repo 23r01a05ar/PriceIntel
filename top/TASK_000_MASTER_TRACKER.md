@@ -33,7 +33,7 @@
 
 | Task | Title | Priority | Status |
 |------|-------|----------|--------|
-| TASK_010 | Fix deal score algorithm | HIGH | [ ] |
+| TASK_010 | Fix deal score algorithm | HIGH | [✓] |
 | TASK_011 | Add proper exception handling to product_search.py | HIGH | [ ] |
 | TASK_012 | Fix CORS to allow specific origins | HIGH | [ ] |
 | TASK_013 | Add input validation to Flask routes | HIGH | [ ] |
