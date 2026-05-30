@@ -13,7 +13,7 @@
 | TASK_001 | Rotate exposed API keys | CRITICAL | [✓] |
 | TASK_002 | Remove secrets from git history | CRITICAL | [✓] |
 | TASK_003 | Update .gitignore | CRITICAL | [✓] |
-| TASK_004 | Remove committed DB + uploads from repo | CRITICAL | [ ] |
+| TASK_004 | Remove committed DB + uploads from repo | CRITICAL | [✓] |
 
 ---
 
