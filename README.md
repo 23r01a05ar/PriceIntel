@@ -19,32 +19,33 @@ This platform automates the entire process. By combining multi-source real-time 
 ## ✨ Key Features
 
 * 🔍 Multi-platform real-time price comparison (Amazon, Flipkart, Walmart APIs)
-* 🤖 AI-powered product matching using image recognition (MobileNetV2)
+* 🤖 AI-powered product matching using image recognition (RapidAPI Google Lens)
 * 📊 Price history tracking with interactive charts
 * ❤️ Wishlist system ("Intelligence Vault")
 * 🌙 Dark mode + Glassmorphism UI
-* 🔐 Google OAuth authentication
-* ⚡ Fast API responses with server-side caching
+* 🔐 Supabase Authentication (Email & Google OAuth)
+* ⚡ Fast Serverless API responses with Edge Rate Limiting
 
 ---
 
 ## 🔄 Data Flow
 
-* **Frontend:** User submits a search query or uploads a product image
-* **Flask API:** Handles requests, authenticates sessions, and manages API dispatches
-* **API Engines:** Fetch real-time product prices from multiple platforms securely
-* **AI Layer:** Identifies product details using TensorFlow (MobileNetV2)
-* **Database:** Stores results in SQLite via SQLAlchemy
-* **Response:** Returns structured JSON to the frontend dashboard
+* **Frontend:** User submits a search query or uploads a product image via Next.js 14 App Router.
+* **API Routes:** Next.js Serverless APIs securely dispatch requests.
+* **API Engines:** Fetch real-time product prices from multiple platforms securely.
+* **AI Layer:** Identifies product details using Google Lens.
+* **Database:** Stores user data, queries, and history securely in Supabase PostgreSQL (secured via RLS).
+* **Response:** Returns structured JSON to the frontend dashboard.
 
 ---
 
 ## 🏗️ System Architecture
 
-* **Frontend:** React + Vite (Glassmorphism UI, Dark/Light Mode)
-* **Backend:** Flask (Secure API endpoints, AI processing, caching)
-* **Database:** SQLite (SQLAlchemy ORM)
-* **Authentication:** Google OAuth + Werkzeug secure hashing
+* **Frontend:** Next.js 14 App Router (React, Tailwind CSS, Framer Motion)
+* **Backend:** Next.js API Routes (`/api/*`)
+* **Database:** Supabase PostgreSQL
+* **Authentication:** Supabase Auth
+* **Storage:** Supabase Storage (For image uploads)
 
 ---
 
@@ -52,81 +53,63 @@ This platform automates the entire process. By combining multi-source real-time 
 
 | Category | Technologies |
 | -------- | ----------------------------------- |
-| Frontend | React, Bootstrap 5, Chart.js, Axios |
-| Backend  | Flask, Flask-CORS, Flask-Caching, python-dotenv |
-| AI       | TensorFlow, OpenCV, NumPy, Pillow |
-| APIs     | RapidAPI (Amazon, Walmart, Flipkart), SerpAPI |
-| Database | SQLite, SQLAlchemy |
-| Tools    | Git, GitHub, VS Code, Postman |
+| Frontend | Next.js 14, React, Tailwind CSS, shadcn/ui, framer-motion, Recharts |
+| Backend  | Next.js API Routes, Edge Middleware |
+| AI       | RapidAPI Google Lens |
+| APIs     | RapidAPI (Amazon, Walmart, Flipkart) |
+| Database | Supabase PostgreSQL |
+| Auth     | Supabase Auth |
+| Tools    | Git, GitHub, VS Code |
 
 ---
 
 ## ✅ Pre-run Checklist
 
-* Python 3.9+ installed
-* Node.js installed
-* Ports available:
-  * Frontend → `5173`
-  * Backend → `5000`
+* Node.js 18+ installed
+* Ports available: `3000`
 
 ---
 
 ## 🔑 Environment Variables
 
 To configure local environment variables securely:
-1. Navigate to `/backend`.
-2. Copy `.env.example` to a new file named `.env`:
-   ```bash
-   cp .env.example .env
-   ```
-3. Open `.env` and fill in your actual credentials (the `.env` file is ignored by Git to prevent credential leaks):
+1. Navigate to `/frontend`.
+2. Open `.env.local` and fill in your actual credentials (the `.env.local` file is ignored by Git to prevent credential leaks):
    ```env
-   # API Keys
-   RAPIDAPI_KEY=your_rapidapi_key_here
-   SERPAPI_KEY=your_serpapi_key_here
-
-   # OAuth Client ID
-   GOOGLE_CLIENT_ID=your_google_id_here
+   # Supabase Configuration
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
    ```
+
+3. For RapidAPI Providers:
+   - Navigate to `frontend/src/config/rapidapi/snippets/`
+   - Paste the Node.js (fetch) snippet containing your API key into a `.txt` file (e.g. `amazon-1.txt`).
+   - Run `npm run validate-snippets`. Your API keys are automatically securely extracted.
 
 ---
 
 ## 🚀 Quick Start
 
-### 1️⃣ Backend Setup
-
-```bash
-cd backend
-python -m venv venv
-# On Windows
-venv\Scripts\activate
-# On Linux/macOS
-source venv/bin/activate
-
-pip install -r requirements.txt
-python app.py
-```
-
----
-
-### 2️⃣ Frontend Setup
-
 ```bash
 cd frontend
 npm install
-npm start
+npm run dev
 ```
+
+Navigate to `http://localhost:3000` to access the application.
 
 ---
 
 ## 📡 API Endpoints
 
-* `GET /api/compare-prices?product=laptop` — Compare real-time prices across stores
-* `POST /api/upload-image` — Upload product image for AI-driven search
+* `GET /api/search?query=laptop` — Compare real-time prices across stores
+* `POST /api/upload` — Upload product image for AI-driven search
 * `GET /api/price-history?product_id=1` — Retrieve historical prices for charting
 * `POST /api/wishlist` — Add a product to the user's wishlist vault
-* `GET /api/wishlist/<user_id>` — Fetch the user's vault
-* `DELETE /api/wishlist/<wish_id>` — Remove a product from the wishlist
+* `GET /api/wishlist` — Fetch the user's vault
+* `DELETE /api/wishlist?wish_id=X` — Remove a product from the wishlist
+* `GET /api/history` — Fetch recent user search queries
+* `POST /api/alerts` — Create a target price alert
 
 ---
 
@@ -141,7 +124,7 @@ The user interface mockups and dashboards can be viewed in:
 
 * Branch naming → `feature/your-name`
 * Commit format → `Milestone: Description`
-* Follow PEP8 (Python) & ESLint (React)
+* Follow ESLint (React) and Prettier conventions
 
 ---
 

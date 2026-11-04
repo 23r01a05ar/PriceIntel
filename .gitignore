@@ -45,3 +45,18 @@ Thumbs.db
 *.njsproj
 *.sln
 *.swp
+# RapidAPI Zero-Config System
+frontend/src/config/rapidapi/snippets/
+frontend/src/config/rapidapi/generatedProviders.ts
+frontend/src/config/rapidapi/mappings/
+
+# Security & API Keys
+frontend/src/config/apis/apiKeys.ts
+
+# Temporary Scripts & Logs
+frontend/scripts/
+top/archive/scripts/
+*.log
+logs/
+debug/
+test-artifacts/

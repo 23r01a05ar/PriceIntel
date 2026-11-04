@@ -1,0 +1,90 @@
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 300 14% 98%;
+    --foreground: 180 2% 11%;
+    --card: 300 14% 98%;
+    --card-foreground: 180 2% 11%;
+    --popover: 300 14% 98%;
+    --popover-foreground: 180 2% 11%;
+    --primary: 257 100% 41%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 249 11% 89%;
+    --secondary-foreground: 247 11% 31%;
+    --muted: 249 11% 89%;
+    --muted-foreground: 247 11% 31%;
+    --accent: 249 11% 89%;
+    --accent-foreground: 257 100% 41%;
+    --destructive: 0 75% 42%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 249 8% 50%;
+    --input: 249 8% 50%;
+    --ring: 251 82% 56%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 260 5% 8%;
+    --foreground: 300 14% 98%;
+    --card: 257 6% 12%;
+    --card-foreground: 300 14% 98%;
+    --popover: 257 6% 12%;
+    --popover-foreground: 300 14% 98%;
+    --primary: 251 82% 56%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 247 11% 20%;
+    --secondary-foreground: 300 14% 98%;
+    --muted: 247 11% 20%;
+    --muted-foreground: 249 8% 60%;
+    --accent: 247 11% 20%;
+    --accent-foreground: 251 82% 56%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 247 11% 20%;
+    --input: 247 11% 20%;
+    --ring: 251 82% 56%;
+  }
+  * {
+    @apply border-border outline-ring;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+@layer utilities {
+  .animate-wiggle {
+    animation: wiggle 0.5s ease-in-out infinite;
+  }
+  .shimmer {
+    background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--background)) 50%, hsl(var(--muted)) 75%);
+    background-size: 200% 100%;
+    animation: shimmer-effect 1.5s infinite;
+  }
+  .best-deal-glow {
+    box-shadow: 0 0 20px hsla(var(--primary), 0.15);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes shimmer-effect {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
